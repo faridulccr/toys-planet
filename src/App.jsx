@@ -4,6 +4,7 @@ import "./App.scss";
 // components import
 import { Spinner } from "react-bootstrap";
 // import Footer from "./components/footer/Footer";
+import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
 
 function App() {
@@ -25,7 +26,7 @@ function App() {
                     <Outlet />
                 )}
             </main>
-            {/* <Footer /> */}
+            <Footer />
         </>
     );
 }

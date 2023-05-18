@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
+import logo from "../../assets/images/logo.jpg";
 import Account from "./Account";
 import ActiveRoute from "./ActiveRoute";
 import "./Header.style.scss";
@@ -12,9 +13,13 @@ const Header = () => {
     };
 
     return (
-        <Navbar bg="dark" variant="dark" expand="lg" fixed="top">
+        <Navbar bg="dark" variant="dark" expand="lg" id="header">
             <Container>
-                <Navbar.Brand href="#home">Toys-Planet</Navbar.Brand>
+                <Navbar.Brand className="d-flex align-items-center">
+                    <img src={logo} alt="logo" id="logo" />
+                    <span className="website-name">Toys-Planet</span>
+                </Navbar.Brand>
+
                 <Navbar.Toggle
                     aria-controls="navbar-nav"
                     onClick={handleToggle}
@@ -23,11 +28,12 @@ const Header = () => {
                     id="navbar-nav"
                     className={expanded ? "show" : ""}
                 >
-                    <Nav className="ml-auto">
+                    <Nav>
                         <ActiveRoute to="/">Home</ActiveRoute>
-                        <ActiveRoute to="/blog">Blog</ActiveRoute>
                         <ActiveRoute to="/all-toys">All Toys</ActiveRoute>
-                        <ActiveRoute to="/contact">Contact</ActiveRoute>
+                        <ActiveRoute to="/my-toys">My Toys</ActiveRoute>
+                        <ActiveRoute to="/add-a-toys">Add A Toy</ActiveRoute>
+                        <ActiveRoute to="/blogs">Blogs</ActiveRoute>
                         <Account />
                     </Nav>
                 </Navbar.Collapse>

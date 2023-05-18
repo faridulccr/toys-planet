@@ -30,11 +30,20 @@ const Home = () => {
                     data-aos-easing="ease-out-cubic"
                     data-aos-duration="2000"
                 >
-                    <h1>Welcome to My Website</h1>
-                    <p>
-                        Discover a world of amazing toys and games for all ages!
-                    </p>
-                    <Button variant="primary">Shop Now</Button>
+                    <div id="banner-text">
+                        <h1 className="text-white fw-bold">
+                            Welcome to{" "}
+                            <span style={{ color: "#e3e63f" }}>
+                                {" "}
+                                Toys-Planet{" "}
+                            </span>
+                        </h1>
+                        <p className="text-white fw-semibold">
+                            Discover a world of amazing toys and games for all
+                            ages!
+                        </p>
+                        <Button variant="primary">Shop Now</Button>
+                    </div>
                 </Container>
             </div>
             <Container>{/* Rest of the content */}</Container>

@@ -9,8 +9,15 @@ import "./index.scss";
 
 // components
 import App from "./App";
+import AddAToys from "./components/add-a-toys/AddAToys";
+import AllToys from "./components/all-toys/AllToys";
+import Blogs from "./components/blogs/Blogs";
 import ErrorPage from "./components/error-page/ErrorPage";
 import Home from "./components/home/Home";
+import Login from "./components/login/Login";
+import MyToys from "./components/my-toys/MyToys";
+import SignUp from "./components/signup/Signup";
+import PrivateRoute from "./PrivateRoute";
 import AuthProvider from "./providers/AuthProvider";
 
 // components import
@@ -26,32 +33,38 @@ const router = createBrowserRouter([
                 element: <Home />,
                 // loader: () => fetch(`${import.meta.env.VITE_SERVER_API}/chefs`),
             },
-            // {
-            //     path: "/signup",
-            //     element: <SignUp />,
-            // },
-            // {
-            //     path: "/login",
-            //     element: <Login />,
-            // },
-            // {
-            //     path: "/blog",
-            //     element: <Blog />,
-            // },
-            // {
-            //     path: "/recipes/:chefsID",
-            //     element: (
-            //         <PrivateRoute>
-            //             <Recipes />
-            //         </PrivateRoute>
-            //     ),
-            //     loader: ({ params }) =>
-            //         fetch(
-            //             `${import.meta.env.VITE_SERVER_API}/chefs/${
-            //                 params.chefsID
-            //             }`
-            //         ),
-            // },
+            {
+                path: "/all-toys",
+                element: <AllToys />,
+            },
+            {
+                path: "/my-toys",
+                element: (
+                    <PrivateRoute>
+                        <MyToys />
+                    </PrivateRoute>
+                ),
+            },
+            {
+                path: "/add-a-toys",
+                element: (
+                    <PrivateRoute>
+                        <AddAToys />
+                    </PrivateRoute>
+                ),
+            },
+            {
+                path: "/blogs",
+                element: <Blogs />,
+            },
+            {
+                path: "/signup",
+                element: <SignUp />,
+            },
+            {
+                path: "/login",
+                element: <Login />,
+            },
         ],
     },
 ]);

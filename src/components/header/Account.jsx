@@ -12,15 +12,17 @@ const Account = () => {
                 <>
                     <img
                         className="account-logo"
-                        src={currentUser.photoURL}
-                        title={currentUser.displayName}
+                        src={currentUser?.photoURL}
+                        title={currentUser?.displayName}
                     />
-                    <span onClick={logout}>logout</span>
+                    <a href="#" onClick={logout}>
+                        Logout
+                    </a>
                 </>
             ) : (
                 <>
-                    <ActiveRoute to="/signup">Signup</ActiveRoute>
-                    <ActiveRoute to="/login">Login</ActiveRoute>
+                    <ActiveRoute to="/signup">Sign up</ActiveRoute>
+                    <ActiveRoute to="/login">Log in</ActiveRoute>
                 </>
             )}
         </div>

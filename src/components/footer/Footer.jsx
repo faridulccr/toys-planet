@@ -1,92 +1,58 @@
+import {
+    faFacebook,
+    faInstagram,
+    faTwitter,
+} from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Col, Container, Row } from "react-bootstrap";
 import "./Footer.style.scss";
 
 const Footer = () => {
     return (
-        <footer className="px-5 py-4">
-            <section className="row">
-                <div className="col-lg-6 text-center text-lg-start text-white">
-                    <p className="small mb-3 mb-lg-0 mt-1 mx-2">
-                        {" "}
-                        &copy; Copyright by{" "}
-                        <span
-                            className="fw-semibold"
-                            style={{ color: "rgba(5, 121, 141, 0.836)" }}
-                        >
-                            Spicy Kitchen
-                        </span>{" "}
-                    </p>
-                </div>
-
-                <div className="col-lg-6 text-center text-lg-end">
-                    <Link to="/" className="mx-2 fw-bold home">
-                        {" "}
-                        Home{" "}
-                    </Link>
-
-                    <Link
-                        to="https://www.facebook.com"
-                        className="mx-2"
-                        target="_blank"
-                        title="facebook"
+        <footer className="bg-dark text-light">
+            <Container>
+                <Row>
+                    <Col md={6} className="text-center text-md-left">
+                        <p>
+                            &copy; 2023{" "}
+                            <span className="website-name"> Toys-Planet </span>.
+                            All rights reserved.
+                        </p>
+                        <p>Designed and developed by Faridul Islam</p>
+                    </Col>
+                    <Col
+                        md={6}
+                        className="d-flex align-items-center justify-content-center"
                     >
-                        {" "}
-                        <i
-                            className="fab fa-facebook"
-                            style={{ color: "#3b5998" }}
-                        ></i>{" "}
-                    </Link>
-                    <Link
-                        to="https://www.youtube.com"
-                        className="mx-2"
-                        target="_blank"
-                        title="youtube"
-                    >
-                        {" "}
-                        <i
-                            className="fab fa-youtube"
-                            style={{ color: "#FF0000" }}
-                        ></i>{" "}
-                    </Link>
-                    <Link
-                        to="https://www.instagram.com"
-                        className="mx-2"
-                        target="_blank"
-                        title="instagram"
-                    >
-                        {" "}
-                        <i
-                            className="fab fa-instagram"
-                            style={{ color: "#feda75" }}
-                        ></i>{" "}
-                    </Link>
-                    <Link
-                        to="https://www.linkedin.com"
-                        className="mx-2"
-                        target="_blank"
-                        title="linkedin"
-                    >
-                        {" "}
-                        <i
-                            className="fab fa-linkedin"
-                            style={{ color: "#0072b1" }}
-                        ></i>{" "}
-                    </Link>
-                    <Link
-                        to="https://www.twitter.com"
-                        className="mx-2"
-                        target="_blank"
-                        title="twitter"
-                    >
-                        {" "}
-                        <i
-                            className="fab fa-twitter"
-                            style={{ color: "#00acee" }}
-                        ></i>{" "}
-                    </Link>
-                </div>
-            </section>
+                        <div className="social-icons">
+                            <a
+                                href="https://www.facebook.com"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="me-3"
+                            >
+                                <FontAwesomeIcon icon={faFacebook} />
+                            </a>
+                            <a
+                                href="https://www.twitter.com"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <FontAwesomeIcon icon={faTwitter} />
+                            </a>
+                            <a
+                                href="https://www.instagram.com"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="ms-3"
+                            >
+                                <FontAwesomeIcon icon={faInstagram} />
+                            </a>
+                        </div>
+                    </Col>
+                </Row>
+            </Container>
         </footer>
     );
 };
