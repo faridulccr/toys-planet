@@ -50,9 +50,11 @@ const Login = () => {
 
     return (
         <div className="login-background-control" loading="lazy">
-            <div className="row d-flex align-items-center justify-content-center height-control">
+            <div className="d-flex align-items-center justify-content-center height-control">
                 <Container className="mx-auto mt-5 col-sm-6 px-4">
-                    <h2 className="text-center text-white">Please Login</h2>
+                    <h2 className="text-center text-white mb-4">
+                        Please Log in
+                    </h2>
                     <Form onSubmit={handleLogin}>
                         <Form.Group className="mb-3" controlId="formGroupEmail">
                             <Form.Control

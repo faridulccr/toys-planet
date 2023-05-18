@@ -45,7 +45,7 @@ const SignUp = () => {
     };
 
     return (
-        <div className="signup-background-control row" loading="lazy">
+        <div className="signup-background-control" loading="lazy">
             <div>
                 <div className="col-sm-6 mx-auto px-4">
                     <h2 className="text-center text-white my-4">
