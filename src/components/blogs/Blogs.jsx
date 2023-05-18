@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import React from "react";
 import { Card, Col, Container, Row } from "react-bootstrap";
 import useTitle from "../../hooks/useTitle";
-import "./Blogs.style.scss";
 
 const Blog = () => {
     useTitle("Blogs");

@@ -16,6 +16,7 @@ import ErrorPage from "./components/error-page/ErrorPage";
 import Home from "./components/home/Home";
 import Login from "./components/login/Login";
 import MyToys from "./components/my-toys/MyToys";
+import SingleToyDetails from "./components/signgle-toy-detains/SingleToyDetails";
 import SignUp from "./components/signup/Signup";
 import PrivateRoute from "./PrivateRoute";
 import AuthProvider from "./providers/AuthProvider";
@@ -64,6 +65,14 @@ const router = createBrowserRouter([
             {
                 path: "/login",
                 element: <Login />,
+            },
+            {
+                path: "/single-toy-details/:id",
+                element: (
+                    <PrivateRoute>
+                        <SingleToyDetails />
+                    </PrivateRoute>
+                ),
             },
         ],
     },

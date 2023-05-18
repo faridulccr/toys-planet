@@ -4,13 +4,15 @@ import React, { useEffect } from "react";
 import { Button, Container } from "react-bootstrap";
 import bannerImage from "../../assets/images/banner-2.webp";
 import useTitle from "../../hooks/useTitle";
+import Gallery from "./Gallery";
 import "./Home.style.scss";
+import TabsSection from "./TabsSection";
 
 const Home = () => {
     useEffect(() => {
         AOS.init({
             duration: 800, // Animation duration
-            once: true, // Animation will trigger only once
+            once: false, // Animation will trigger only once
         });
     }, []);
     useTitle("Home");
@@ -46,7 +48,10 @@ const Home = () => {
                     </div>
                 </Container>
             </div>
-            <Container>{/* Rest of the content */}</Container>
+            <Gallery />
+            <Container>
+                <TabsSection />
+            </Container>
         </div>
     );
 };
