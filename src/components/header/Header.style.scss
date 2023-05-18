@@ -1,0 +1,59 @@
+/* nav component */
+header {
+    min-width: 380px;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    border-bottom: 1px solid #e5e5e5;
+    z-index: 999999;
+    padding: 0 3%;
+
+    a {
+        transition: 0.3s;
+        &:hover {
+            color: #000;
+        }
+    }
+    .active-route {
+        color: #000;
+    }
+}
+.nav {
+    display: flex;
+    align-items: center;
+}
+.nav ul {
+    list-style: none;
+    display: flex;
+    margin-bottom: 0;
+    padding-left: 0;
+}
+
+.nav ul li {
+    font-weight: 600;
+    margin-right: 20px;
+
+    a {
+        font-size: 17px;
+    }
+}
+header .brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: rgba(5, 121, 141, 0.836);
+}
+
+@media screen and (max-width: 500px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 80px;
+    }
+}

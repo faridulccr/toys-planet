@@ -1,0 +1,21 @@
+/* account component */
+.account {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 0.7rem;
+    font-size: 15px;
+}
+.account .account-logo {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.account a {
+    font-weight: bold;
+}
+
+.account > span:hover {
+    cursor: pointer;
+}
