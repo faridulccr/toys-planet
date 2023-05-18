@@ -11,7 +11,7 @@ const Account = () => {
             {currentUser ? (
                 <>
                     <img
-                        className="account-logo"
+                        className="account-logo ms-4"
                         src={currentUser?.photoURL}
                         title={currentUser?.displayName}
                     />

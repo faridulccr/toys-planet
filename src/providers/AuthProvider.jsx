@@ -40,7 +40,7 @@ const AuthProvider = ({ children }) => {
     // signUp function
     const signUp = async (email, password, username, photoURL) => {
         const auth = getAuth();
-        await createUserWithEmailAndPassword(auth, "farid@ovi.com", "123456");
+        await createUserWithEmailAndPassword(auth, email, password);
 
         // profile update
         await updateProfile(auth.currentUser, {
@@ -54,7 +54,6 @@ const AuthProvider = ({ children }) => {
             ...updatedUser,
         });
     };
-    signUp();
 
     // login function
     const login = (email, password) => {

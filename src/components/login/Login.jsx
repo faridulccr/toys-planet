@@ -81,7 +81,7 @@ const Login = () => {
                             {showPassword ? "Hide Password" : "Show Password"}
                         </p>
                         {loading ? (
-                            <Spinner />
+                            <Spinner className="text-white" />
                         ) : (
                             <input
                                 className="btn btn-secondary px-5 mb-3"
@@ -114,7 +114,7 @@ const Login = () => {
                                 className="fs-3 ms-1 register-btn d-inline-block"
                                 to="/signup"
                             >
-                                Sign-Up
+                                Sign up
                             </Link>
                         </p>
                     </Form>
