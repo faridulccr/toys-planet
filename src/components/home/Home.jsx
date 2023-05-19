@@ -19,7 +19,7 @@ const Home = () => {
     }, []);
     useTitle("Home");
     return (
-        <div>
+        <div className="background">
             <div
                 id="banner"
                 className="d-flex justify-content-center align-items-center"

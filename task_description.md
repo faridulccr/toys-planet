@@ -33,40 +33,12 @@ You can explore component libraries other than DaisyUI. Remember, a unique proje
 🚩: 0 [ If we have any update we will mention it here ] 
 <br/>
 
-## **Main Requirements**
-
-5. **` Home page:`**
-    - **Extra Section:** Add two relevant sections. Try to make them attractive.
-
 <br/>
 
-7. **` All Toys`** page: Create an All Toys page where you will see the toys all the users have added in the tabular form. Each row of the All Toys table/list will have the following information:
+7. **` All Toys`** > Show 20 results by default by using `limit` > > Implement a search system on this page, based on the **Toy name.** > <br/>
+   <br/>
 
-    - Seller: (if available) show the name of the person who posted the toy
-    - Toy Name
-    - Sub-category
-    - Price
-    - Available Quantity
-    - View Details button
-      <br/>
-
-    > Show 20 results by default by using `limit`
-    >
-    > Implement a search system on this page, based on the **Toy name.** > <br/>
-
-    Without logging in, if a user clicks on the **View Details** button, they will be redirected to the Login Page. Make sure to take the user to the Details Page after the user successfully logs in.
-
-<br/>
-
-8. **`Single toy details route will be a private route:`**
-
-    > After clicking on the **View Details** button, he/ she will be redirected to the **Toys Details** route **( /toy/:id )** containing the information **( picture, toy name, seller name, seller email, price, rating, available quantity, and detail description)**
-    >
-    > (optional) If possible, display the view details in a modal
-
-<br/>
-
-9. **` Add A Toy page will be a private route:`**
+8. **` Add A Toy page will be a private route:`**
    <br/>
 
     > Create an **Add A Toy** page where there will be a form having the following fields:

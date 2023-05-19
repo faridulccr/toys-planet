@@ -80,7 +80,7 @@ const Gallery = () => {
     return (
         <section className="gallery-section">
             <Container>
-                <h2 className="section-title">Gallery</h2>
+                <h2 className="section-title text-white">Gallery</h2>
                 <Row>
                     {galleryItems.map((item) => (
                         <Col

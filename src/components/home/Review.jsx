@@ -33,7 +33,9 @@ const Review = () => {
     return (
         <section className="review-section mt-5">
             <Container>
-                <h2 className="text-center mb-4">Customer Reviews</h2>
+                <h2 className="text-center fw-bold mb-4 text-white">
+                    Customer Reviews
+                </h2>
                 <Row>
                     {customerReviews.map((review) => (
                         <Col key={review.id} md={4} className="mb-4">

@@ -73,6 +73,12 @@ const router = createBrowserRouter([
                         <SingleToyDetails />
                     </PrivateRoute>
                 ),
+                // loader: ({ params }) =>
+                //     fetch(
+                //         `${import.meta.env.API_LINK}/api/single-toy/${
+                //             params.id
+                //         }`
+                //     ),
             },
         ],
     },

@@ -9,7 +9,19 @@ import { useAuth } from "../../providers/AuthProvider";
 const TabsSection = () => {
     const { currentUser } = useAuth();
     const [showToast, setShowToast] = useState(false);
+    const [category, setCategory] = useState({});
     const navigate = useNavigate();
+
+    // useEffect(() => {
+    //     const getData = async () => {
+    //         const response = await fetch(
+    //             `${import.meta.env.API_LINK}/api/category`
+    //         );
+    //         const data = await response.json();
+    //         setCategory(data);
+    //     };
+    //     getData();
+    // }, []);
 
     const handleViewDetails = (id) => {
         if (!currentUser) {
@@ -17,7 +29,7 @@ const TabsSection = () => {
             setTimeout(() => {
                 setShowToast(false);
                 navigate(`/single-toy-details/${id}`);
-            }, 3000);
+            }, 2000);
         } else {
             navigate(`/single-toy-details/${id}`);
         }
@@ -34,61 +46,62 @@ const TabsSection = () => {
                     </Toast.Body>
                 </Toast>
             )}
-            <h1 className="fw-semibold text-center mb-4">Shop by category</h1>
+            <h1 className="fw-semibold text-center mb-4 text-white">
+                Shop by category
+            </h1>
             <Tabs>
                 <TabList>
-                    <Tab>Sports Car</Tab>
-                    <Tab>Truck</Tab>
-                    <Tab>Mini Police Car</Tab>
+                    <Tab>
+                        <strong className="text-warning">Sports Car</strong>
+                    </Tab>
+                    <Tab>
+                        <strong className="text-warning">Truck</strong>
+                    </Tab>
+                    <Tab>
+                        <strong className="text-warning">
+                            Mini Police Car
+                        </strong>
+                    </Tab>
                 </TabList>
 
                 <TabPanel>
                     <Row>
-                        <Col md={6}>
-                            <Card
-                                style={{ width: "90%", margin: "0 auto" }}
-                                data-aos="fade-right"
-                                className="mb-3 md-mb-0"
-                            >
-                                <Card.Img
-                                    variant="top"
-                                    src={cardImage}
-                                    alt="Card Image"
-                                />
-                                <Card.Body>
-                                    <Card.Title>Card Name</Card.Title>
-                                    <Card.Text>Price: $19.99</Card.Text>
-                                    <Card.Text>Rating: 4.5</Card.Text>
-                                    <Button
-                                        onClick={() => handleViewDetails(3)}
-                                        variant="primary"
+                        {Array.isArray(category.sports_car) &&
+                            category.sports_car.map((car, n) => (
+                                <Col key={n} md={6} lg={4}>
+                                    <Card
+                                        style={{
+                                            width: "90%",
+                                            margin: "0 auto",
+                                        }}
+                                        data-aos={
+                                            n + (1 % 2) === 0
+                                                ? "fade-right"
+                                                : "fade-left"
+                                        }
+                                        className="mb-3 md-mb-0"
                                     >
-                                        View Details
-                                    </Button>
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                        <Col md={6}>
-                            <Card
-                                style={{ width: "90%", margin: "0 auto" }}
-                                data-aos="fade-left"
-                                className="mb-3 md-mb-0"
-                            >
-                                <Card.Img
-                                    variant="top"
-                                    src={cardImage}
-                                    alt="Card Image"
-                                />
-                                <Card.Body>
-                                    <Card.Title>Card Name</Card.Title>
-                                    <Card.Text>Price: $19.99</Card.Text>
-                                    <Card.Text>Rating: 4.5</Card.Text>
-                                    <Button variant="primary">
-                                        View Details
-                                    </Button>
-                                </Card.Body>
-                            </Card>
-                        </Col>
+                                        <Card.Img
+                                            variant="top"
+                                            src={cardImage}
+                                            alt="Card Image"
+                                        />
+                                        <Card.Body>
+                                            <Card.Title>Card Name</Card.Title>
+                                            <Card.Text>Price: $19.99</Card.Text>
+                                            <Card.Text>Rating: 4.5</Card.Text>
+                                            <Button
+                                                onClick={() =>
+                                                    handleViewDetails(car._id)
+                                                }
+                                                variant="primary"
+                                            >
+                                                View Details
+                                            </Button>
+                                        </Card.Body>
+                                    </Card>
+                                </Col>
+                            ))}
                     </Row>
                 </TabPanel>
                 <TabPanel>
