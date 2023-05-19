@@ -4,8 +4,10 @@ import React, { useEffect } from "react";
 import { Button, Container } from "react-bootstrap";
 import bannerImage from "../../assets/images/banner-2.webp";
 import useTitle from "../../hooks/useTitle";
+import Features from "./Features";
 import Gallery from "./Gallery";
 import "./Home.style.scss";
+import Review from "./Review";
 import TabsSection from "./TabsSection";
 
 const Home = () => {
@@ -52,6 +54,8 @@ const Home = () => {
             <Container>
                 <TabsSection />
             </Container>
+            <Features />
+            <Review />
         </div>
     );
 };

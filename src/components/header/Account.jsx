@@ -4,12 +4,16 @@ import ActiveRoute from "./ActiveRoute";
 
 const Account = () => {
     const { currentUser, logout } = useAuth();
-    // console.log(currentUser);
+    // console.log(currentUser?.email);
 
     return (
         <div className="account">
             {currentUser ? (
                 <>
+                    <ActiveRoute to={`/my-toys/${currentUser?.email}`}>
+                        My Toys
+                    </ActiveRoute>
+                    <ActiveRoute to="/add-a-toys">Add A Toy</ActiveRoute>
                     <img
                         className="account-logo ms-4"
                         src={currentUser?.photoURL}

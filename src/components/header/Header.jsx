@@ -31,8 +31,6 @@ const Header = () => {
                     <Nav>
                         <ActiveRoute to="/">Home</ActiveRoute>
                         <ActiveRoute to="/all-toys">All Toys</ActiveRoute>
-                        <ActiveRoute to="/my-toys">My Toys</ActiveRoute>
-                        <ActiveRoute to="/add-a-toys">Add A Toy</ActiveRoute>
                         <ActiveRoute to="/blogs">Blogs</ActiveRoute>
                         <Account />
                     </Nav>

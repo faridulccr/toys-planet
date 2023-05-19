@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Card, Col, Row } from "react-bootstrap";
+import { Button, Card, Col, Row, Toast } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
@@ -12,18 +12,28 @@ const TabsSection = () => {
     const navigate = useNavigate();
 
     const handleViewDetails = (id) => {
-        if (currentUser) {
-            navigate(`/single-toy-details/${id}`);
-        } else {
+        if (!currentUser) {
             setShowToast(true);
-            navigate("/login");
             setTimeout(() => {
                 setShowToast(false);
+                navigate(`/single-toy-details/${id}`);
             }, 3000);
+        } else {
+            navigate(`/single-toy-details/${id}`);
         }
     };
     return (
         <div>
+            {showToast && (
+                <Toast className="notify-toast">
+                    <Toast.Header>
+                        <strong className="me-auto">Notification</strong>
+                    </Toast.Header>
+                    <Toast.Body className="fw-bold fs-3">
+                        You have to log in first to view details!
+                    </Toast.Body>
+                </Toast>
+            )}
             <h1 className="fw-semibold text-center mb-4">Shop by category</h1>
             <Tabs>
                 <TabList>
