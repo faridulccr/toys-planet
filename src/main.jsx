@@ -9,7 +9,7 @@ import "./index.scss";
 
 // components
 import App from "./App";
-import AddAToys from "./components/add-a-toys/AddAToys";
+import AddAToy from "./components/add-a-toy/AddAToy";
 import AllToys from "./components/all-toys/AllToys";
 import Blogs from "./components/blogs/Blogs";
 import ErrorPage from "./components/error-page/ErrorPage";
@@ -47,10 +47,10 @@ const router = createBrowserRouter([
                 ),
             },
             {
-                path: "/add-a-toys",
+                path: "/add-a-toy",
                 element: (
                     <PrivateRoute>
-                        <AddAToys />
+                        <AddAToy />
                     </PrivateRoute>
                 ),
             },

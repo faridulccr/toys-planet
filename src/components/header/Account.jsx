@@ -13,7 +13,7 @@ const Account = () => {
                     <ActiveRoute to={`/my-toys/${currentUser?.email}`}>
                         My Toys
                     </ActiveRoute>
-                    <ActiveRoute to="/add-a-toys">Add A Toy</ActiveRoute>
+                    <ActiveRoute to="/add-a-toy">Add A Toy</ActiveRoute>
                     <img
                         className="account-logo ms-4"
                         src={currentUser?.photoURL}
