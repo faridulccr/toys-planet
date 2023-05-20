@@ -13,7 +13,7 @@ const SingleToyDetails = ({
     description,
 }) => {
     return (
-        <div className="background pt-5">
+        <div className="background py-5">
             <Container>
                 <h2 className="text-center text-white fw-bold mb-4">
                     View Details

@@ -58,15 +58,15 @@ const AllToys = () => {
             setShowToast(true);
             setTimeout(() => {
                 setShowToast(false);
-                navigate(`/single-toy-details/${id}`);
+                navigate(`/single-toy-details/${id}`, { replace: true });
             }, 2000);
         } else {
-            navigate(`/single-toy-details/${id}`);
+            navigate(`/single-toy-details/${id}`, { replace: true });
         }
     };
 
     return (
-        <div className="background">
+        <div className="background pb-5">
             {showToast && (
                 <Toast className="notify-toast">
                     <Toast.Header>

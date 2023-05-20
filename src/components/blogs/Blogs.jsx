@@ -17,7 +17,7 @@ const Blog = () => {
     };
 
     return (
-        <div className="background">
+        <div className="background pb-5">
             <Container>
                 <h1 className="py-5 text-center text-white">Blogs</h1>
                 <Row>
