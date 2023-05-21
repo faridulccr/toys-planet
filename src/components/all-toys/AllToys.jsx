@@ -1,16 +1,52 @@
-import React, { useState } from "react";
-import { Button, Container, Table, Toast } from "react-bootstrap";
-import { useLoaderData, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import {
+    Button,
+    Col,
+    Container,
+    Form,
+    FormControl,
+    Row,
+    Spinner,
+    Table,
+    Toast,
+} from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import useTitle from "../../hooks/useTitle";
 import { useAuth } from "../../providers/AuthProvider";
 
 const AllToys = () => {
     useTitle("All Toys");
     const { currentUser } = useAuth();
+    const [loading, setLoading] = useState(true);
+    const [searchTerm, setSearchTerm] = useState("");
     const [showToast, setShowToast] = useState(false);
+    const [cars, setCars] = useState([]);
     const navigate = useNavigate();
-    const cars = useLoaderData();
+
+    useEffect(() => {
+        const loadData = async () => {
+            try {
+                const response = await fetch(
+                    `${import.meta.env.VITE_API_LINK}/api/products`
+                );
+                const result = await response.json();
+                setCars(result);
+                setLoading(false);
+            } catch (error) {
+                setLoading(false);
+                console.log(error);
+            }
+        };
+        loadData();
+    }, []);
+
     // console.log(cars);
+    const handleSearch = () => {
+        const results = cars.filter((item) =>
+            item.name.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+        setCars(results);
+    };
 
     const handleViewDetails = (id) => {
         if (!currentUser) {
@@ -38,17 +74,44 @@ const AllToys = () => {
             )}
             <Container>
                 <h2 className="text-white text-center pt-5 mb-4">All Toys</h2>
+                <Row>
+                    <Col sm={10} md={6} className="mx-auto">
+                        <Form className="mb-5" inline>
+                            <FormControl
+                                type="text"
+                                placeholder="Search by name"
+                                value={searchTerm}
+                                onChange={(e) => setSearchTerm(e.target.value)}
+                            />
+                            <Button
+                                className="mt-3"
+                                variant="primary"
+                                onClick={handleSearch}
+                            >
+                                Search
+                            </Button>
+                        </Form>
+                    </Col>
+                </Row>
+
                 <Table responsive className="text-white">
-                    <thead>
-                        <tr>
-                            <th>Seller</th>
-                            <th>Toy Name</th>
-                            <th>Sub-category</th>
-                            <th>Price</th>
-                            <th>Available Quantity</th>
-                            <th>Details</th>
-                        </tr>
-                    </thead>
+                    {loading ? (
+                        <div className="text-center">
+                            <Spinner />
+                        </div>
+                    ) : (
+                        <thead>
+                            <tr>
+                                <th>Seller</th>
+                                <th>Toy Name</th>
+                                <th>Sub-category</th>
+                                <th>Price</th>
+                                <th>Available Quantity</th>
+                                <th>Details</th>
+                            </tr>
+                        </thead>
+                    )}
+
                     <tbody>
                         {Array.isArray(cars) &&
                             cars.map((car) => (
