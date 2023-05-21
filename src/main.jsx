@@ -16,8 +16,8 @@ import ErrorPage from "./components/error-page/ErrorPage";
 import Home from "./components/home/Home";
 import Login from "./components/login/Login";
 import MyToys from "./components/my-toys/MyToys";
-import SingleToyDetails from "./components/signgle-toy-detains/SingleToyDetails";
 import SignUp from "./components/signup/Signup";
+import SingleToyDetails from "./components/single-toy-details/SingleToyDetails";
 import PrivateRoute from "./PrivateRoute";
 import AuthProvider from "./providers/AuthProvider";
 
