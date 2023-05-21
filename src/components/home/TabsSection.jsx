@@ -83,7 +83,7 @@ const TabsSection = () => {
                                             margin: "0 auto",
                                         }}
                                         data-aos={
-                                            n + (1 % 2) === 0
+                                            (n + 1) % 2 === 0
                                                 ? "fade-right"
                                                 : "fade-left"
                                         }
@@ -129,7 +129,7 @@ const TabsSection = () => {
                                             margin: "0 auto",
                                         }}
                                         data-aos={
-                                            n + (1 % 2) === 0
+                                            (n + 1) % 2 === 0
                                                 ? "fade-right"
                                                 : "fade-left"
                                         }
@@ -175,7 +175,7 @@ const TabsSection = () => {
                                             margin: "0 auto",
                                         }}
                                         data-aos={
-                                            n + (1 % 2) === 0
+                                            (n + 1) % 2 === 0
                                                 ? "fade-right"
                                                 : "fade-left"
                                         }
