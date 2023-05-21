@@ -40,7 +40,7 @@ const router = createBrowserRouter([
                     fetch(`${import.meta.env.VITE_API_LINK}/api/products`),
             },
             {
-                path: "/my-toys/:email",
+                path: "/my-toys",
                 element: (
                     <PrivateRoute>
                         <MyToys />

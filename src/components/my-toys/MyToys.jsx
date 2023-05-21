@@ -1,56 +1,40 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Container, Table } from "react-bootstrap";
 import useTitle from "../../hooks/useTitle";
+import { useAuth } from "../../providers/AuthProvider";
 import "./MyToys.style.scss";
 
 const MyToys = () => {
     useTitle("My Toys");
+    const { currentUser } = useAuth();
+    const [loading, setLoading] = useState(true);
     const [showModal, setShowModal] = useState(false);
     const [showToast, setShowToast] = useState(false);
     const [toyId, setToyId] = useState("");
-    const data = [
-        {
-            id: 1,
-            name: "Car 1",
-            brand: "Brand 1",
-            color: "Red",
-            price: 10000,
-            stock: 5,
-        },
-        {
-            id: 2,
-            name: "Car 2",
-            brand: "Brand 2",
-            color: "Blue",
-            price: 15000,
-            stock: 10,
-        },
-        {
-            id: 3,
-            name: "Car 3",
-            brand: "Brand 3",
-            color: "Green",
-            price: 12000,
-            stock: 8,
-        },
-        {
-            id: 4,
-            name: "Car 4",
-            brand: "Brand 4",
-            color: "Yellow",
-            price: 18000,
-            stock: 3,
-        },
-        {
-            id: 5,
-            name: "Car 5",
-            brand: "Brand 5",
-            color: "Black",
-            price: 20000,
-            stock: 12,
-        },
-    ];
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        const getData = async () => {
+            try {
+                const response = await fetch(
+                    `${import.meta.env.VITE_API_LINK}/api/user-products/${
+                        currentUser.email
+                    }`
+                );
+                const result = await response.json();
+                // console.log(result);
+                setData(result);
+                setLoading(false);
+            } catch (err) {
+                console.log(err);
+                setLoading(false);
+            }
+        };
+        getData();
+    }, []);
+
     const updateHandler = (id) => {};
+    const handleDelete = (id) => {};
 
     return (
         <div className="background py-5">
@@ -68,36 +52,38 @@ const MyToys = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {data.map((item) => (
-                            <tr key={item.id}>
-                                <td>{item.id}</td>
-                                <td>{item.name}</td>
-                                <td>{item.brand}</td>
-                                <td>{item.color}</td>
-                                <td>
-                                    <Button
-                                        onClick={() => {
-                                            setShowModal(true);
-                                            setToyId();
-                                        }}
-                                        variant="info"
-                                    >
-                                        Update
-                                    </Button>
-                                </td>
-                                <td>
-                                    <Button
-                                        onClick={() => {
-                                            handleViewDetails();
-                                            setToyId();
-                                        }}
-                                        variant="danger"
-                                    >
-                                        Delete
-                                    </Button>
-                                </td>
-                            </tr>
-                        ))}
+                        {!loading &&
+                            Array.isArray(data) &&
+                            data.map((item) => (
+                                <tr key={item._id}>
+                                    <td>{item.name}</td>
+                                    <td>${item.price}</td>
+                                    <td>{item.availableQuantity}</td>
+                                    <td>{item.description}</td>
+                                    <td>
+                                        <Button
+                                            onClick={() => {
+                                                setShowModal(true);
+                                                setToyId(item._id);
+                                            }}
+                                            variant="info"
+                                        >
+                                            Update
+                                        </Button>
+                                    </td>
+                                    <td>
+                                        <Button
+                                            onClick={() => {
+                                                setShowToast(true);
+                                                setToyId(item._id);
+                                            }}
+                                            variant="danger"
+                                        >
+                                            Delete
+                                        </Button>
+                                    </td>
+                                </tr>
+                            ))}
                     </tbody>
                 </Table>
             </Container>

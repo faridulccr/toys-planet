@@ -7,7 +7,7 @@ import { useAuth } from "../../providers/AuthProvider";
 
 const TabsSection = () => {
     const { currentUser } = useAuth();
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [showToast, setShowToast] = useState(false);
     const [category, setCategory] = useState({});
     const navigate = useNavigate();
@@ -15,7 +15,6 @@ const TabsSection = () => {
     useEffect(() => {
         const getData = async () => {
             try {
-                setLoading(true);
                 const response = await fetch(
                     `${import.meta.env.VITE_API_LINK}/api/product-category`
                 );

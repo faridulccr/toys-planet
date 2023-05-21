@@ -1,35 +1,56 @@
 import React, { useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
+import { useAuth } from "../../providers/AuthProvider";
 import "./AddAToy.style.scss";
 
 const AddAToy = () => {
+    const { currentUser } = useAuth();
     const [formData, setFormData] = useState({
         image: "",
         name: "",
         category: "",
         price: "",
         rating: "",
-        quantity: "",
+        availableQuantity: "",
         description: "",
     });
-
-    const { image, name, category, price, rating, quantity, description } =
-        formData;
 
     const handleInputChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Handle form submission logic here
-        console.log(formData);
+        try {
+            const response = await fetch(
+                `${import.meta.env.VITE_API_LINK}/api/create-product`,
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        ...formData,
+                        seller: currentUser.displayName,
+                        email: currentUser.email,
+                    }),
+                }
+            );
+            const data = response.json();
+            !data.error ? "" : "";
+        } catch (error) {
+            console.log(error);
+        }
+
         // Clear form data
         setFormData({
+            image: "",
             name: "",
-            email: "",
-            message: "",
             category: "",
+            price: "",
+            rating: "",
+            availableQuantity: "",
+            description: "",
         });
     };
 
@@ -45,7 +66,7 @@ const AddAToy = () => {
                                 <Form.Control
                                     type="text"
                                     name="image"
-                                    value={image}
+                                    value={formData.image}
                                     onChange={handleInputChange}
                                     placeholder="Toy picture URL"
                                     required
@@ -56,7 +77,7 @@ const AddAToy = () => {
                                 <Form.Control
                                     type="text"
                                     name="name"
-                                    value={name}
+                                    value={formData.name}
                                     onChange={handleInputChange}
                                     placeholder="Enter toy name"
                                     required
@@ -71,7 +92,7 @@ const AddAToy = () => {
                                 <Form.Control
                                     as="select"
                                     name="category"
-                                    value={category}
+                                    value={formData.category}
                                     onChange={handleInputChange}
                                     required
                                 >
@@ -80,8 +101,8 @@ const AddAToy = () => {
                                         Sports Car
                                     </option>
                                     <option value="truck">Truck</option>
-                                    <option value="mini police car">
-                                        Mini Police Car
+                                    <option value="police car">
+                                        Police Car
                                     </option>
                                 </Form.Control>
                             </Form.Group>
@@ -90,7 +111,7 @@ const AddAToy = () => {
                                 <Form.Control
                                     type="text"
                                     name="price"
-                                    value={price}
+                                    value={formData.price}
                                     onChange={handleInputChange}
                                     placeholder="Enter price"
                                     required
@@ -101,7 +122,7 @@ const AddAToy = () => {
                                 <Form.Control
                                     type="text"
                                     name="rating"
-                                    value={rating}
+                                    value={formData.rating}
                                     onChange={handleInputChange}
                                     placeholder="Rating up to 5"
                                     required
@@ -114,8 +135,8 @@ const AddAToy = () => {
                                 <Form.Label>Available Quantity</Form.Label>
                                 <Form.Control
                                     type="text"
-                                    name="quantity"
-                                    value={quantity}
+                                    name="availableQuantity"
+                                    value={formData.availableQuantity}
                                     onChange={handleInputChange}
                                     placeholder="Enter quantity"
                                     required
@@ -130,7 +151,7 @@ const AddAToy = () => {
                                     as="textarea"
                                     rows={4}
                                     name="description"
-                                    value={description}
+                                    value={formData.description}
                                     onChange={handleInputChange}
                                     placeholder="Enter description"
                                     required
