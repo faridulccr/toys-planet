@@ -32,11 +32,12 @@ const router = createBrowserRouter([
             {
                 path: "/",
                 element: <Home />,
-                // loader: () => fetch(`${import.meta.env.VITE_SERVER_API}/chefs`),
             },
             {
                 path: "/all-toys",
                 element: <AllToys />,
+                loader: () =>
+                    fetch(`${import.meta.env.VITE_API_LINK}/api/products`),
             },
             {
                 path: "/my-toys/:email",
@@ -73,12 +74,12 @@ const router = createBrowserRouter([
                         <SingleToyDetails />
                     </PrivateRoute>
                 ),
-                // loader: ({ params }) =>
-                //     fetch(
-                //         `${import.meta.env.API_LINK}/api/single-toy/${
-                //             params.id
-                //         }`
-                //     ),
+                loader: ({ params }) =>
+                    fetch(
+                        `${import.meta.env.VITE_API_LINK}/api/single-product/${
+                            params.id
+                        }`
+                    ),
             },
         ],
     },

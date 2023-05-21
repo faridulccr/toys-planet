@@ -1,17 +1,22 @@
 import React from "react";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
+import { useLoaderData } from "react-router-dom";
 import "./SingleToyDetails.style.scss";
 
-const SingleToyDetails = ({
-    image,
-    toyName,
-    sellerName,
-    sellerEmail,
-    price,
-    rating,
-    quantity,
-    description,
-}) => {
+const SingleToyDetails = () => {
+    const data = useLoaderData();
+    // console.log(data);
+    const {
+        image,
+        name,
+        seller,
+        email,
+        price,
+        rating,
+        availableQuantity,
+        description,
+    } = data;
+
     return (
         <div className="background py-5">
             <Container>
@@ -21,29 +26,25 @@ const SingleToyDetails = ({
                 <Card className="toy-banner">
                     <Row>
                         <Col md={7}>
-                            <Card.Img
-                                variant="top"
-                                src="https://m.media-amazon.com/images/I/81Pg8JfI7ZL.jpg"
-                                alt={toyName}
-                            />
+                            <Card.Img variant="top" src={image} />
                         </Col>
                         <Col md={5} className="d-flex align-items-center ps-4">
                             <Card.Body>
-                                <Card.Title>Name: {toyName}</Card.Title>
+                                <Card.Title>Name: {name}</Card.Title>
                                 <Card.Text>
-                                    <strong>Seller:</strong> {sellerName}
+                                    <strong>Seller:</strong> {seller}df
                                     <br />
-                                    <strong>Email:</strong> {sellerEmail}
+                                    <strong>Email:</strong> {email}
                                     <br />
                                     <strong>Price:</strong> ${price}
                                     <br />
                                     <strong>Rating:</strong> {rating}/5
                                     <br />
-                                    <strong>Quantity:</strong> {quantity}
+                                    <strong>Quantity:</strong>
+                                    {availableQuantity}
                                     <br />
-                                    <strong>Description:</strong> {quantity}
+                                    <strong>Description:</strong> {description}
                                 </Card.Text>
-                                <Card.Text>{description}</Card.Text>
                                 <Button variant="primary">Buy now</Button>
                             </Card.Body>
                         </Col>

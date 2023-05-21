@@ -11,13 +11,14 @@ import Review from "./Review";
 import TabsSection from "./TabsSection";
 
 const Home = () => {
+    useTitle("Home");
     useEffect(() => {
         AOS.init({
             duration: 800, // Animation duration
             once: false, // Animation will trigger only once
         });
     }, []);
-    useTitle("Home");
+
     return (
         <div className="background pb-5">
             <div
