@@ -3,7 +3,6 @@ import { Button, Container, Table, Toast } from "react-bootstrap";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import useTitle from "../../hooks/useTitle";
 import { useAuth } from "../../providers/AuthProvider";
-import "./AllToys.style.scss";
 
 const AllToys = () => {
     useTitle("All Toys");

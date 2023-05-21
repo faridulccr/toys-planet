@@ -9,7 +9,6 @@ import {
     Toast,
 } from "react-bootstrap";
 import { useAuth } from "../../providers/AuthProvider";
-import "./AddAToy.style.scss";
 
 const AddAToy = () => {
     const { currentUser } = useAuth();

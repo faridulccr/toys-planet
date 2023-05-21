@@ -38,35 +38,18 @@ You can explore component libraries other than DaisyUI. Remember, a unique proje
 7. **` All Toys`** > Show 20 results by default by using `limit` > > Implement a search system on this page, based on the **Toy name.** > <br/>
    <br/>
 
-8. **` Add A Toy page will be a private route:`**
+8. **`My Toys page will be private routes:`** If a user logs in, they will see the My Toys page, which it will show all the toys information they have added from the Add A Toy page in a tabular form. Each row will have an update and delete button.
    <br/>
 
-    > Create an **Add A Toy** page where there will be a form having the following fields:
-
-    - Picture URL of the toy,
-    - Name,
-    - seller name (if available from the logged in user)
-    - seller email (info from the logged in user)
-    - Sub-category ( For example: if the website is based on Educational and learning toys, the sub-categories can be Math Toys, Language Toys, and Science Toys.)
-    - Price,
-    - Rating,
-    - Available quantity
-    - Detail description
-
-<br/>
-
-10. **`My Toys page will be private routes:`** If a user logs in, they will see the My Toys page, which it will show all the toys information they have added from the Add A Toy page in a tabular form. Each row will have an update and delete button.
-    <br/>
-
-    -   **Update Action** - If they click the `update` button, they can update the Toy information (Price, available quantity, Detail description) <br/><br/>
+    - **Update Action** - If they click the `update` button, they can update the Toy information (Price, available quantity, Detail description) <br/><br/>
         > **Note:** you can show the update form in a modal or another route.
 
     <br/>
 
-    -   **Delete Action** - If they click the delete button, the Toy will be removed from the list. Before the delete, ask for a delete confirmation.
-        <br/>
-        <br/> > **Note:** If a user logs in they will only see the toys they have added. The user cannot see the toys other users added.
-        <br/>
+    - **Delete Action** - If they click the delete button, the Toy will be removed from the list. Before the delete, ask for a delete confirmation.
+      <br/>
+      <br/> > **Note:** If a user logs in they will only see the toys they have added. The user cannot see the toys other users added.
+      <br/>
 
 <br/>
 

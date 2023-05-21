@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Button, Container, Table } from "react-bootstrap";
+import { Button, Container, Table, Toast } from "react-bootstrap";
 import useTitle from "../../hooks/useTitle";
 import { useAuth } from "../../providers/AuthProvider";
-import "./MyToys.style.scss";
+import UpdateModal from "./UpdateModal";
 
 const MyToys = () => {
     useTitle("My Toys");
@@ -32,12 +32,20 @@ const MyToys = () => {
         };
         getData();
     }, []);
-
-    const updateHandler = (id) => {};
     const handleDelete = (id) => {};
 
     return (
         <div className="background py-5">
+            {showToast && (
+                <Toast className="notify-toast">
+                    <Toast.Header>
+                        <strong className="me-auto">Notification</strong>
+                    </Toast.Header>
+                    <Toast.Body className="fw-bold fs-3 text-dark">
+                        {showToast}
+                    </Toast.Body>
+                </Toast>
+            )}
             <Container>
                 <h2 className="text-white text-center mb-4">Your Toys</h2>
                 <Table responsive className="text-white">
@@ -87,6 +95,15 @@ const MyToys = () => {
                     </tbody>
                 </Table>
             </Container>
+            {showModal && (
+                <UpdateModal
+                    setShowModal={setShowModal}
+                    toyId={toyId}
+                    setShowToast={setShowToast}
+                    setData={setData}
+                    data={data}
+                />
+            )}
         </div>
     );
 };
