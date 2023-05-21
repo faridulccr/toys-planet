@@ -36,7 +36,7 @@ const MyToys = () => {
     }, []);
 
     const handleDelete = async (id) => {
-        const isConfirm = confirm("Do you wand to delete?");
+        const isConfirm = confirm("Do you want to delete?");
         if (isConfirm) {
             setDeleteLoading(true);
             const response = await fetch(
