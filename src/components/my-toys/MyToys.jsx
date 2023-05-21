@@ -10,6 +10,7 @@ const MyToys = () => {
     const [loading, setLoading] = useState(true);
     const [deleteLoading, setDeleteLoading] = useState(false);
     const [showModal, setShowModal] = useState(false);
+    const [showModalData, setShowModalData] = useState();
     const [showToast, setShowToast] = useState(false);
     const [toyId, setToyId] = useState("");
     const [data, setData] = useState([]);
@@ -131,6 +132,13 @@ const MyToys = () => {
                                     <td>
                                         <Button
                                             onClick={() => {
+                                                setShowModalData({
+                                                    price: item.price,
+                                                    availableQuantity:
+                                                        item.availableQuantity,
+                                                    description:
+                                                        item.description,
+                                                });
                                                 setShowModal(true);
                                                 setToyId(item._id);
                                             }}
@@ -161,6 +169,7 @@ const MyToys = () => {
                     setShowToast={setShowToast}
                     setData={setData}
                     data={data}
+                    showModalData={showModalData}
                 />
             )}
         </div>

@@ -1,12 +1,17 @@
 import React, { useState } from "react";
 import { Button, Form, Modal, Spinner } from "react-bootstrap";
 
-const UpdateModal = ({ toyId, setShowModal, setShowToast, setData, data }) => {
+const UpdateModal = ({
+    toyId,
+    setShowModal,
+    showModalData,
+    setShowToast,
+    setData,
+    data,
+}) => {
     const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState({
-        price: "",
-        availableQuantity: "",
-        description: "",
+        ...showModalData,
     });
 
     const handleChange = (e) => {
@@ -79,7 +84,9 @@ const UpdateModal = ({ toyId, setShowModal, setShowToast, setData, data }) => {
                 <Modal.Body>
                     <Form onSubmit={handleFormSubmit}>
                         <Form.Group controlId="price">
-                            <Form.Label>Price:</Form.Label>
+                            <Form.Label>
+                                <strong>Price:</strong>
+                            </Form.Label>
                             <Form.Control
                                 type="text"
                                 name="price"
@@ -90,7 +97,9 @@ const UpdateModal = ({ toyId, setShowModal, setShowToast, setData, data }) => {
                             />
                         </Form.Group>
                         <Form.Group controlId="availableQuantity">
-                            <Form.Label>Available Quantity:</Form.Label>
+                            <Form.Label>
+                                <strong>Available Quantity:</strong>
+                            </Form.Label>
                             <Form.Control
                                 type="text"
                                 name="availableQuantity"
@@ -101,7 +110,9 @@ const UpdateModal = ({ toyId, setShowModal, setShowToast, setData, data }) => {
                             />
                         </Form.Group>
                         <Form.Group controlId="description">
-                            <Form.Label>Description:</Form.Label>
+                            <Form.Label>
+                                <strong>Description:</strong>
+                            </Form.Label>
                             <Form.Control
                                 as="textarea"
                                 rows={4}
