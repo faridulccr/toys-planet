@@ -1,61 +1,7 @@
 # **Toy Marketplace**
 
-A company is seeking a web developer who can create a simple full-stack Toy Marketplace website. You are required to focus on a specific toy category, such as-
-
-    - Toy Cars(sports car, truck, regular car, mini fire truck, mini police car, etc.)
-    - Action figure toys(marvel, avengers, star wars, transformers, etc.)
-    - Animal toys(teddy bear, horse, dinosaur, dogs, cat, unicorn, cows, etc.)
-    - Sports toys(miniature or plastic version of sports accessories)
-    - Toy robots
-    - Dolls(baby dolls, barbie, American girl, etc)
-    - Disney dolls (Disney princes, frozen dolls, animation characters, donald duck, etc.),
-    - Girls' makeup toy,
-    - Video game toys,
-    - Building and Construction Toys,
-    - Educational and Learning Toys(science kits, math learning toys, engineering kits, engineering tools),
-    - Cooking Toys,
-    - Arts and Crafts Toys,
-    - Musical Toys(miniature musical instruments),
-    - Board Games and Puzzles,
-    - Electronic Toys,
-    - Lego sets(lego city, lego star wars, lego architecture, lego cars),
-    - Sand castle building toys, etc.
-    - Any other types of toys
-
-If you select Disney dolls toys, your website will only showcase toys related to that particular types. Do not mix different types of toys in your website.
-
-Make sure your website design is unique. Visit ThemeForest, Dribble, google, etc., to get some ideas.
-
-You can explore component libraries other than DaisyUI. Remember, a unique project will add more value to your portfolio.
-
-<hr/>
-<br/>
-🚩: 0 [ If we have any update we will mention it here ] 
-<br/>
-
-<br/>
-
-7. **` All Toys`** > Show 20 results by default by using `limit` > > Implement a search system on this page, based on the **Toy name.** > <br/>
+7. **` All Toys`** > > Implement a search system on this page, based on the **Toy name.** > <br/>
    <br/>
-
-8. **`My Toys page will be private routes:`** If a user logs in, they will see the My Toys page, which it will show all the toys information they have added from the Add A Toy page in a tabular form. Each row will have an update and delete button.
-   <br/>
-
-    - **Update Action** - If they click the `update` button, they can update the Toy information (Price, available quantity, Detail description) <br/><br/>
-        > **Note:** you can show the update form in a modal or another route.
-
-    <br/>
-
-    - **Delete Action** - If they click the delete button, the Toy will be removed from the list. Before the delete, ask for a delete confirmation.
-      <br/>
-      <br/> > **Note:** If a user logs in they will only see the toys they have added. The user cannot see the toys other users added.
-      <br/>
-
-<br/>
-
-11. For all the CRUD operations, show relevant toast/ notification/ anything with a meaningful message
-
-<br/>
 
 ## **Bonus Requirements**
 

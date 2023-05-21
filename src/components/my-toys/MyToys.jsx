@@ -8,6 +8,7 @@ const MyToys = () => {
     useTitle("My Toys");
     const { currentUser } = useAuth();
     const [loading, setLoading] = useState(true);
+    const [deleteLoading, setDeleteLoading] = useState(false);
     const [showModal, setShowModal] = useState(false);
     const [showToast, setShowToast] = useState(false);
     const [toyId, setToyId] = useState("");
@@ -32,7 +33,27 @@ const MyToys = () => {
         };
         getData();
     }, []);
-    const handleDelete = (id) => {};
+    const handleDelete = async (id) => {
+        const isConfirm = confirm("Do you wand to delete?");
+        if (isConfirm) {
+            setDeleteLoading(true);
+            const response = await fetch(
+                `${import.meta.env.VITE_API_LINK}/api/delete-product/${id}`,
+                {
+                    method: "DELETE",
+                }
+            );
+            const result = await response.json();
+            setShowToast(result.message);
+            setDeleteLoading(false);
+            setTimeout(() => {
+                setShowToast(false);
+            }, 2000);
+
+            const remainingData = data.filter((car) => car._id !== id);
+            setData(remainingData);
+        }
+    };
 
     return (
         <div className="background py-5">
@@ -81,10 +102,9 @@ const MyToys = () => {
                                     </td>
                                     <td>
                                         <Button
-                                            onClick={() => {
-                                                setShowToast(true);
-                                                setToyId(item._id);
-                                            }}
+                                            onClick={() =>
+                                                handleDelete(item._id)
+                                            }
                                             variant="danger"
                                         >
                                             Delete
