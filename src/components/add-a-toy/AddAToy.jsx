@@ -1,10 +1,20 @@
 import React, { useState } from "react";
-import { Button, Col, Container, Form, Row } from "react-bootstrap";
+import {
+    Button,
+    Col,
+    Container,
+    Form,
+    Row,
+    Spinner,
+    Toast,
+} from "react-bootstrap";
 import { useAuth } from "../../providers/AuthProvider";
 import "./AddAToy.style.scss";
 
 const AddAToy = () => {
     const { currentUser } = useAuth();
+    const [loading, setLoading] = useState(false);
+    const [showNotify, setShowNotify] = useState(false);
     const [formData, setFormData] = useState({
         image: "",
         name: "",
@@ -22,6 +32,7 @@ const AddAToy = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
+            setLoading(true);
             const response = await fetch(
                 `${import.meta.env.VITE_API_LINK}/api/create-product`,
                 {
@@ -36,10 +47,15 @@ const AddAToy = () => {
                     }),
                 }
             );
-            const data = response.json();
-            !data.error ? "" : "";
+            const data = await response.json();
+            setShowNotify(data.message);
+            setLoading(false);
+            setTimeout(() => {
+                setShowNotify(false);
+            }, 2000);
         } catch (error) {
             console.log(error);
+            setLoading(false);
         }
 
         // Clear form data
@@ -56,6 +72,16 @@ const AddAToy = () => {
 
     return (
         <div className="background text-white py-5">
+            {showNotify && (
+                <Toast className="notify-toast">
+                    <Toast.Header>
+                        <strong className="me-auto">Notification</strong>
+                    </Toast.Header>
+                    <Toast.Body className="fw-bold fs-3 text-dark">
+                        {showNotify}
+                    </Toast.Body>
+                </Toast>
+            )}
             <h2 className="text-center pb-4"> Add A Toy</h2>
             <Container>
                 <Row>
@@ -159,7 +185,7 @@ const AddAToy = () => {
                             </Form.Group>
 
                             <Button variant="primary" type="submit">
-                                Add Toy
+                                {loading ? <Spinner /> : "Add Toy"}
                             </Button>
                         </Form>
                     </Col>
