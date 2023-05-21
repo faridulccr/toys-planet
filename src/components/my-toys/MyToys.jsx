@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Container, Table, Toast } from "react-bootstrap";
+import { Button, Container, Spinner, Table, Toast } from "react-bootstrap";
 import useTitle from "../../hooks/useTitle";
 import { useAuth } from "../../providers/AuthProvider";
 import UpdateModal from "./UpdateModal";
@@ -33,6 +33,7 @@ const MyToys = () => {
         };
         getData();
     }, []);
+
     const handleDelete = async (id) => {
         const isConfirm = confirm("Do you wand to delete?");
         if (isConfirm) {
@@ -55,6 +56,17 @@ const MyToys = () => {
         }
     };
 
+    const handleSort = (order) => {
+        const sortedResults = [...data].sort((a, b) => {
+            if (order === "asc") {
+                return a.price - b.price;
+            } else {
+                return b.price - a.price;
+            }
+        });
+        setData(sortedResults);
+    };
+
     return (
         <div className="background py-5">
             {showToast && (
@@ -68,18 +80,45 @@ const MyToys = () => {
                 </Toast>
             )}
             <Container>
-                <h2 className="text-white text-center mb-4">Your Toys</h2>
+                <h2 className="text-white text-center mb-4">
+                    You have added this toys
+                </h2>
+                <div className="text-center mb-3">
+                    <Button
+                        className="mb-2"
+                        variant="secondary"
+                        onClick={() => handleSort("asc")}
+                    >
+                        Sort by Price (Low to High)
+                    </Button>
+                    <br />
+                    <Button
+                        variant="secondary"
+                        onClick={() => handleSort("desc")}
+                    >
+                        Sort by Price (High to Low)
+                    </Button>
+                </div>
                 <Table responsive className="text-white">
-                    <thead>
-                        <tr>
-                            <th>Toy Name</th>
-                            <th>Price</th>
-                            <th>Available Quantity</th>
-                            <th>Description</th>
-                            <th>Update</th>
-                            <th>Delete</th>
-                        </tr>
-                    </thead>
+                    {loading ? (
+                        <tbody>
+                            <tr className="text-center">
+                                <Spinner />
+                            </tr>
+                        </tbody>
+                    ) : (
+                        <thead>
+                            <tr>
+                                <th>Toy Name</th>
+                                <th>Price</th>
+                                <th>Available Quantity</th>
+                                <th>Description</th>
+                                <th>Update</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                    )}
+
                     <tbody>
                         {!loading &&
                             Array.isArray(data) &&

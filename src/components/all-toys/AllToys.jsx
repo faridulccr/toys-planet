@@ -48,6 +48,14 @@ const AllToys = () => {
         setCars(results);
     };
 
+    const enterHandle = (e) => {
+        setSearchTerm(e.target.value);
+        if (e.key == "Enter") {
+            e.preventDefault();
+            handleSearch();
+        }
+    };
+
     const handleViewDetails = (id) => {
         if (!currentUser) {
             setShowToast(true);
@@ -82,6 +90,7 @@ const AllToys = () => {
                                 placeholder="Search by name"
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
+                                onKeyDown={enterHandle}
                             />
                             <Button
                                 className="mt-3"
@@ -96,9 +105,11 @@ const AllToys = () => {
 
                 <Table responsive className="text-white">
                     {loading ? (
-                        <div className="text-center">
-                            <Spinner />
-                        </div>
+                        <thead>
+                            <tr className="text-center">
+                                <Spinner />
+                            </tr>
+                        </thead>
                     ) : (
                         <thead>
                             <tr>

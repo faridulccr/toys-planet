@@ -1,22 +1,4 @@
-# **Toy Marketplace**
-
-7. **` All Toys`** > > Implement a search system on this page, based on the **Toy name.** > <br/>
-   <br/>
-
-## **Bonus Requirements**
-
-1. **Commits & readme:**
-
-    - Minimum 18 meaningful git commits on the client-side repository.
-    - Minimum 8 meaningful commits on the server-side repository.
-    - Create a readme for client-side and write about your project (at least 5 bullet points). ** Remember to add your client-side live link to your website here.**
-
-<br/>
-
-5. On the **My Toys** page, you must implement a sorting system to sort the toys in **descending** and **ascending** orders based on the **price**. (Explore MongoDB sorting operation & implement it on the backend). The design of the sorting system depends on you.
-   <br/>
-
----
+#
 
 <br/>
 

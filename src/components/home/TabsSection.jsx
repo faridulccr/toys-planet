@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Card, Col, Row, Toast } from "react-bootstrap";
+import { Button, Card, Col, Row, Spinner, Toast } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
@@ -73,6 +73,11 @@ const TabsSection = () => {
 
                 <TabPanel>
                     <Row>
+                        {loading && (
+                            <div className="text-center">
+                                <Spinner />
+                            </div>
+                        )}
                         {!loading &&
                             Array.isArray(category.sports_cars) &&
                             category.sports_cars.map((car, n) => (
